@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String translateTag = "TRANSLATE";
     private static final String dialogTag = "DIALOG";
 
-    private Fragment translateFragment;
+    private TranslateDialog translateFragment;
     private DialogFragment dialogFragment;
 
 
@@ -68,11 +68,11 @@ public class MainActivity extends AppCompatActivity {
      */
     private void initFragments() {
         FragmentManager manager = getSupportFragmentManager();
-        translateFragment = manager.findFragmentByTag(translateTag);
+        translateFragment = (TranslateDialog) manager.findFragmentByTag(translateTag);
         dialogFragment = (DialogFragment) manager.findFragmentByTag(dialogTag);
 
         if (translateFragment == null)
-            translateFragment = new Fragment();
+            translateFragment = new TranslateDialog();
 
         if (dialogFragment == null)
             dialogFragment = new DialogFragment();
