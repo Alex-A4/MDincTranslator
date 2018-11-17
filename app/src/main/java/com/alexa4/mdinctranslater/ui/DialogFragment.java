@@ -18,7 +18,7 @@ import com.alexa4.mdinctranslater.R;
 import java.util.ArrayList;
 
 public class DialogFragment extends Fragment {
-    private RecyclerView dialogView;
+    private RecyclerView mDialogView;
     private ArrayList<String> mMessages;
     private DialogAdapter mDialogAdapter;
 
@@ -40,11 +40,11 @@ public class DialogFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.dialog_fragment, container, false);
 
-        dialogView = (RecyclerView) root.findViewById(R.id.dialog_recyclerview);
+        mDialogView = (RecyclerView) root.findViewById(R.id.dialog_recyclerview);
         //Set layout to scroll from bot to top
-        dialogView.setLayoutManager(new LinearLayoutManager(getContext(),
+        mDialogView.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, true));
-        dialogView.setAdapter(mDialogAdapter);
+        mDialogView.setAdapter(mDialogAdapter);
 
         final TextInputEditText messageText = (TextInputEditText) root.findViewById(R.id.dialog_input_text);
 
@@ -64,16 +64,16 @@ public class DialogFragment extends Fragment {
 
 
 
-    private class DialogAdapter extends RecyclerView.Adapter<DialogViewHolder> {
+    private class DialogAdapter extends RecyclerView.Adapter<mDialogViewHolder> {
         private static final int LEFT = 0;
         private static final int RIGHT = 1;
 
         @NonNull
         @Override
-        public DialogViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        public mDialogViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
 
-            DialogViewHolder holder = null;
+            mDialogViewHolder holder = null;
 
             if (viewType == LEFT) {
                 holder = new DialogLeftView(inflater.inflate(R.layout.dialog_item_left, viewGroup,
@@ -87,7 +87,7 @@ public class DialogFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull DialogViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull mDialogViewHolder holder, int position) {
             holder.setText(mMessages.get(position));
         }
 
@@ -115,7 +115,7 @@ public class DialogFragment extends Fragment {
     /**
      * ViewHolder which response for left dialog item
      */
-    class DialogLeftView extends DialogViewHolder {
+    class DialogLeftView extends mDialogViewHolder {
         private TextView mTextView;
 
         public DialogLeftView(@NonNull View itemView) {
@@ -132,7 +132,7 @@ public class DialogFragment extends Fragment {
     /**
      * ViewHolder which response for right dialog item
      */
-    class DialogRightView extends DialogViewHolder {
+    class DialogRightView extends mDialogViewHolder {
         private TextView mTextView;
 
         public DialogRightView(@NonNull View itemView) {
@@ -148,8 +148,8 @@ public class DialogFragment extends Fragment {
     /**
      * Parent class for dialog items
      */
-    abstract class DialogViewHolder extends RecyclerView.ViewHolder{
-        public DialogViewHolder(@NonNull View itemView) {
+    abstract class mDialogViewHolder extends RecyclerView.ViewHolder{
+        public mDialogViewHolder(@NonNull View itemView) {
             super(itemView);
         }
         /**
