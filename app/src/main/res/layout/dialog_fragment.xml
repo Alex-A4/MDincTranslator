@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:foreground="@drawable/round_corners"
-        android:padding="5dp"
+        android:padding="6dp"
         android:src="@drawable/ic_send"
         app:layout_constraintTop_toTopOf="@id/text_input_layout"
         app:layout_constraintLeft_toRightOf="@id/text_input_layout"
