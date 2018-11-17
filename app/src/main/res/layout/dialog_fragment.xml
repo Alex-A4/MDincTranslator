@@ -26,12 +26,18 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <android.support.design.widget.TextInputEditText
-            android:textColor="@android:color/black"
-            android:hint="@string/dialog_input_hint"
-            android:id="@+id/dialog_input_text"
+        <ScrollView
+            android:fadeScrollbars="false"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputEditText
+                android:textColor="@android:color/black"
+                android:hint="@string/dialog_input_hint"
+                android:id="@+id/dialog_input_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="80dp"/>
+        </ScrollView>
     </android.support.design.widget.TextInputLayout>
 
     <ImageButton
