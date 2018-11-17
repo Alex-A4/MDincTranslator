@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MDincTranslater</string>
+    <string name="dialog_input_hint">Input text</string>
 </resources>
