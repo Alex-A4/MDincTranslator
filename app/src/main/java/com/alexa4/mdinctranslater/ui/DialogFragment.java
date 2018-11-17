@@ -56,7 +56,7 @@ public class DialogFragment extends Fragment {
                 if (!text.equals("")) {
                     mMessages.add(text);
                     messageText.setText("");
-                    mDialogAdapter.notifyDataSetChanged();
+                    mDialogAdapter.notifyItemChanged(mMessages.size());
                 }
             }
         });
