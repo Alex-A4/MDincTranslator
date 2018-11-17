@@ -52,7 +52,7 @@ public class DialogFragment extends Fragment {
         sendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mMessages.add(0, messageText.getText().toString());
+                mMessages.add(messageText.getText().toString());
                 messageText.setText("");
                 mDialogAdapter.notifyDataSetChanged();
             }
@@ -88,19 +88,18 @@ public class DialogFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull mDialogViewHolder holder, int position) {
-            holder.setText(mMessages.get(position));
+            holder.setText(mMessages.get(mMessages.size() - position - 1));
         }
 
         /**
          * If the position is even then dialog will be right
          * else left
-         *
          * @param position
          * @return
          */
         @Override
         public int getItemViewType(int position) {
-            if (position % 2 == 0)
+            if ((mMessages.size() - position) % 2 == 0)
                 return RIGHT;
             else return LEFT;
         }
