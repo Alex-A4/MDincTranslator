@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -32,6 +31,7 @@ public class DialogFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mMessages = new ArrayList<>();
+        mDialogAdapter = new DialogAdapter();
     }
 
     @Nullable
@@ -44,6 +44,7 @@ public class DialogFragment extends Fragment {
         //Set layout to scroll from bot to top
         dialogView.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, true));
+        dialogView.setAdapter(mDialogAdapter);
 
         final TextInputEditText messageText = (TextInputEditText) root.findViewById(R.id.dialog_input_text);
 
@@ -51,7 +52,7 @@ public class DialogFragment extends Fragment {
         sendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mMessages.add(messageText.getText().toString());
+                mMessages.add(0, messageText.getText().toString());
                 messageText.setText("");
                 mDialogAdapter.notifyDataSetChanged();
             }
@@ -119,6 +120,7 @@ public class DialogFragment extends Fragment {
 
         public DialogLeftView(@NonNull View itemView) {
             super(itemView);
+            mTextView = (TextView) itemView.findViewById(R.id.card_text);
         }
 
         @Override
