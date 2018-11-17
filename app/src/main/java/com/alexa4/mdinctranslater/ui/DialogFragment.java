@@ -52,9 +52,12 @@ public class DialogFragment extends Fragment {
         sendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mMessages.add(messageText.getText().toString());
-                messageText.setText("");
-                mDialogAdapter.notifyDataSetChanged();
+                String text = messageText.getText().toString().trim();
+                if (!text.equals("")) {
+                    mMessages.add(text);
+                    messageText.setText("");
+                    mDialogAdapter.notifyDataSetChanged();
+                }
             }
         });
 
