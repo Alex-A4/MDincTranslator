@@ -22,6 +22,8 @@
             style="@style/DialogTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="@dimen/dialog_text_margin"
             android:text="Heyo guys"/>
     </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>
