@@ -1,4 +1,5 @@
 <resources>
     <dimen name="dialog_card_margin">8dp</dimen>
     <dimen name="dialog_text_margin">8dp</dimen>
+    <dimen name="translate_text_height">170dp</dimen>
 </resources>
