@@ -1,0 +1,4 @@
+#Sat Nov 17 19:37:47 MSK 2018
+base.0=/home/alexa4/AndroidStudioProjects/MDincTranslator/app/build/intermediates/transforms/dexMerger/debug/1
+path.0=classes.dex
+renamed.0=classes.dex

@@ -76,10 +76,10 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] /home/alexa4/.gradl
 		ADDED from /home/alexa4/AndroidStudioProjects/MDincTranslator/app/src/main/AndroidManifest.xml:6:9-35
 	android:theme
 		ADDED from /home/alexa4/AndroidStudioProjects/MDincTranslator/app/src/main/AndroidManifest.xml:11:9-44
-activity#com.alexa4.mdinctranslater.MainActivity
+activity#com.alexa4.mdinctranslater.ui.MainActivity
 ADDED from /home/alexa4/AndroidStudioProjects/MDincTranslator/app/src/main/AndroidManifest.xml:12:9-19:20
 	android:name
-		ADDED from /home/alexa4/AndroidStudioProjects/MDincTranslator/app/src/main/AndroidManifest.xml:13:13-41
+		ADDED from /home/alexa4/AndroidStudioProjects/MDincTranslator/app/src/main/AndroidManifest.xml:13:13-44
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /home/alexa4/AndroidStudioProjects/MDincTranslator/app/src/main/AndroidManifest.xml:14:13-18:29
 action#android.intent.action.MAIN
