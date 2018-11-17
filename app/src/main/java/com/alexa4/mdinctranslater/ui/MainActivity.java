@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String dialogTag = "DIALOG";
 
     private Fragment translateFragment;
-    private Fragment dialogFragment;
+    private DialogFragment dialogFragment;
 
 
     @Override
@@ -69,13 +69,13 @@ public class MainActivity extends AppCompatActivity {
     private void initFragments() {
         FragmentManager manager = getSupportFragmentManager();
         translateFragment = manager.findFragmentByTag(translateTag);
-        dialogFragment = manager.findFragmentByTag(dialogTag);
+        dialogFragment = (DialogFragment) manager.findFragmentByTag(dialogTag);
 
         if (translateFragment == null)
             translateFragment = new Fragment();
 
         if (dialogFragment == null)
-            dialogFragment = new Fragment();
+            dialogFragment = new DialogFragment();
     }
 
     /**
