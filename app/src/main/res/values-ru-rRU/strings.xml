@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MDincTranslater</string>
+    <string name="dialog_input_hint">Введите сообщение</string>
+    <string name="enter_text_to_translate">Введите текст для перевода</string>
+</resources>
