@@ -8,6 +8,8 @@
         android:id="@+id/dialog_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:scrollbarThumbVertical="@color/favorite_color"
+        android:fadeScrollbars="false"
         android:scrollbars="vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/text_input_layout">
@@ -27,7 +29,6 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ScrollView
-            android:fadeScrollbars="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <android.support.design.widget.TextInputEditText
