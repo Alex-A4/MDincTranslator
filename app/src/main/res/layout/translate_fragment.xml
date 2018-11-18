@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/text_to_translate_layout"
         android:layout_marginTop="16dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:padding="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/translate_text_height"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/small_round_corners"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/translated_text_layout">
 
         <ScrollView
-            android:fadeScrollbars="false"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/text_to_translate"
@@ -31,6 +33,28 @@
                 android:maxHeight="@dimen/translate_text_height"/>
         </ScrollView>
     </android.support.design.widget.TextInputLayout>
+
+    <ScrollView
+        android:id="@+id/translated_text_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:scrollbarThumbVertical="@color/favorite_color"
+        android:background="@drawable/small_round_corners"
+        android:padding="7dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_to_translate_layout"
+        app:layout_constraintBottom_toTopOf="@id/languages_swap_layout">
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/translated_text"
+            android:textColor="@android:color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </ScrollView>
 
 
 
