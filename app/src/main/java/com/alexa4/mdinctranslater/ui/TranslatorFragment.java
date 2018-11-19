@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alexa4.mdinctranslater.R;
+import com.alexa4.mdinctranslater.network.YandexTranslator;
 
 public class TranslatorFragment extends Fragment {
     private TextInputEditText mInputText;
@@ -48,7 +49,13 @@ public class TranslatorFragment extends Fragment {
                 String text = mInputText.getText().toString().trim();
 
                 if (!text.equals("")) {
-                    mTranslatedText.setText(text);
+                    YandexTranslator.translateText(text, "ru-en",
+                            new YandexTranslator.TranslateCallback() {
+                        @Override
+                        public void sendTranslatedText(String text) {
+                            mTranslatedText.setText(text);
+                        }
+                    });
                 }
             }
         });
