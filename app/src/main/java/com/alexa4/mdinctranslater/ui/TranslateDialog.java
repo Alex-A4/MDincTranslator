@@ -19,6 +19,7 @@ public class TranslateDialog extends Fragment {
     private TextInputEditText mInputText;
     private AppCompatTextView mTranslatedText;
     private AppCompatImageButton mTranslateButton;
+    private AppCompatImageButton mClearAllButton;
 
 
     @Nullable
@@ -40,6 +41,14 @@ public class TranslateDialog extends Fragment {
                 if (!text.equals("")) {
                     mTranslatedText.setText(text);
                 }
+            }
+        });
+
+        mClearAllButton = (AppCompatImageButton) root.findViewById(R.id.clear_all_button);
+        mClearAllButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mInputText.setText("");
             }
         });
 
