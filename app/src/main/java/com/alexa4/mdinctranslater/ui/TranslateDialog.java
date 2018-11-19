@@ -49,6 +49,7 @@ public class TranslateDialog extends Fragment {
             @Override
             public void onClick(View v) {
                 mInputText.setText("");
+                mTranslatedText.setText("");
             }
         });
 
