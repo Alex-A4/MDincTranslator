@@ -21,7 +21,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alexa4.mdinctranslater.R;
-import com.alexa4.mdinctranslater.network.YandexTranslator;
 import com.alexa4.mdinctranslater.presenters.TranslatorPresenter;
 
 public class TranslatorFragment extends Fragment {
@@ -29,6 +28,8 @@ public class TranslatorFragment extends Fragment {
     private AppCompatTextView mTranslatedText;
     private AppCompatImageButton mTranslateButton;
     private AppCompatImageButton mClearAllButton;
+    private TextView mTextTo;
+    private TextView mTextFrom;
 
     private TranslatorPresenter mPresenter;
 
@@ -52,8 +53,8 @@ public class TranslatorFragment extends Fragment {
 
         //TODO: add logic to select languages
         //Bottom text fields which show languages for translating
-        final TextView textFrom = (TextView) root.findViewById(R.id.from_language_text);
-        final TextView textTo = (TextView)  root.findViewById(R.id.to_language_text);
+        mTextFrom = (TextView) root.findViewById(R.id.from_language_text);
+        mTextTo = (TextView)  root.findViewById(R.id.to_language_text);
 
         mInputText = (TextInputEditText) root.findViewById(R.id.text_to_translate);
 
@@ -88,15 +89,22 @@ public class TranslatorFragment extends Fragment {
         mSwapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String tempText = textFrom.getText().toString();
-                textFrom.setText(textTo.getText());
-                textTo.setText(tempText);
+                mPresenter.swapTranslateLanguages();
+                updateLanguagesLayout();
             }
         });
 
         setHasOptionsMenu(true);
 
         return root;
+    }
+
+    /**
+     * Update the current selected languages
+     */
+    private void updateLanguagesLayout() {
+        mTextFrom.setText(mPresenter.getLanguageFrom());
+        mTextTo.setText(mPresenter.getLanguageTo());
     }
 
 
