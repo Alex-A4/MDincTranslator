@@ -122,8 +122,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
-                case 0: return "Translator";
-                case 1: return "Dialogs";
+                case 0: return getString(R.string.translator_tab);
+                case 1: return getString(R.string.dialogs_tab);
                 default: return "Error";
             }
         }
