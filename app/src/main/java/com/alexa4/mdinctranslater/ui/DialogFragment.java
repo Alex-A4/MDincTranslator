@@ -44,6 +44,17 @@ public class DialogFragment extends Fragment {
         mMessages = mPresenter.getMessages();
         mDialogAdapter = new DialogAdapter();
     }
+    
+    /**
+     * Clearing links
+     */
+    @Override
+    public void onStop() {
+        super.onStop();
+        mPresenter.detach();
+        mMessages = null;
+        mPresenter = null;
+    }
 
     @Nullable
     @Override
@@ -72,6 +83,7 @@ public class DialogFragment extends Fragment {
             }
         });
 
+        setHasOptionsMenu(true);
 
         return root;
     }
@@ -169,16 +181,5 @@ public class DialogFragment extends Fragment {
          * Method to set text for dialog item
          */
         public abstract void setText(String text);
-    }
-
-    /**
-     * Clearing links
-     */
-    @Override
-    public void onStop() {
-        super.onStop();
-        mPresenter.detach();
-        mMessages = null;
-        mPresenter = null;
     }
 }
