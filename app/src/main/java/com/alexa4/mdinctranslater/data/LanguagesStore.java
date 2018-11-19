@@ -10,11 +10,25 @@ public class LanguagesStore {
     //Pairs of languages
     private ArrayList<LanguageInfo> mPairs;
 
+    //The language from which need translate
+    private LanguageInfo mLanguageFrom;
+    public LanguageInfo getLanguageFrom() {
+        return mLanguageFrom;
+    }
+
+    //The language to which need translate
+    private LanguageInfo mLanguageTo;
+    public LanguageInfo getLanguageTo() {
+        return mLanguageTo;
+    }
+
     //Singleton instance of store
     private static LanguagesStore sStore;
 
     private LanguagesStore() {
         mPairs = new ArrayList<>();
+        mLanguageFrom = new LanguageInfo("Русский", "ru");
+        mLanguageTo = new LanguageInfo("Английский", "en");
     }
 
     public static LanguagesStore getStore() {
@@ -28,14 +42,22 @@ public class LanguagesStore {
         return mPairs;
     }
 
+
+    /**
+     * Swap the target languages
+     */
+    public void swapTargetLanguages() {
+        LanguageInfo temp = mLanguageFrom;
+        mLanguageFrom = mLanguageTo;
+        mLanguageTo = temp;
+    }
+
     /**
      * Create the string pair of translated languages
      * for example en-ru
-     * @param langFrom the language from which need translate
-     * @param langTo the language to which need translate
      * @return the codes pair
      */
-    public String createLangToTranslate(LanguageInfo langFrom, LanguageInfo langTo) {
-        return langFrom.getLanguageCode() + "-" + langTo.getLanguageCode();
+    public String createLangToTranslate() {
+        return mLanguageFrom.getLanguageCode() + "-" + mLanguageTo.getLanguageCode();
     }
 }
