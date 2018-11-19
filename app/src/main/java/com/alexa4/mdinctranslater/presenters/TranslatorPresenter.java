@@ -31,7 +31,7 @@ public class TranslatorPresenter {
      * @param text the text which need translate
      */
     public void getTranslatedText(String text) {
-        YandexTranslator.translateText(text, "ru-en",
+        YandexTranslator.translateText(text, mStore.createLangToTranslate(),
                 new YandexTranslator.TranslateCallback() {
                     @Override
                     public void sendTranslatedText(String translatedText) {
