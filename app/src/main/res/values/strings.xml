@@ -7,4 +7,5 @@
     <string name="settings_title">Settings</string>
     <string name="check_internet">Check your internet connection</string>
     <string name="translated_thanks_yandex">Translated thaks to Yandex.Translate</string>
+    <string name="dialog_more">More</string>
 </resources>
