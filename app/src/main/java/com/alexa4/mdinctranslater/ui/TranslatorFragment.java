@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import com.alexa4.mdinctranslater.R;
 
-public class TranslateDialog extends Fragment {
+public class TranslatorFragment extends Fragment {
     private TextInputEditText mInputText;
     private AppCompatTextView mTranslatedText;
     private AppCompatImageButton mTranslateButton;
