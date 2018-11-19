@@ -10,10 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alexa4.mdinctranslater.R;
 import com.alexa4.mdinctranslater.adapters.DialogAdapter;
@@ -96,4 +98,14 @@ public class DialogFragment extends Fragment {
         inflater.inflate(R.menu.dialog_menu, menu);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.dialog_more:
+                Toast.makeText(getContext(), "Dialog more selected!", Toast.LENGTH_SHORT).show();
+                return true;
+
+            default:return false;
+        }
+    }
 }
