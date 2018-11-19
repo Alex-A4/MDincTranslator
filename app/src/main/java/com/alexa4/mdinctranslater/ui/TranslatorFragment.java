@@ -13,6 +13,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alexa4.mdinctranslater.R;
@@ -28,6 +30,11 @@ public class TranslatorFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.translate_fragment, container, false);
+
+        //TODO: add logic to select languages
+        //Bottom text fields which show languages for translating
+        final TextView textFrom = (TextView) root.findViewById(R.id.from_language_text);
+        final TextView textTo = (TextView)  root.findViewById(R.id.to_language_text);
 
         mInputText = (TextInputEditText) root.findViewById(R.id.text_to_translate);
 
@@ -52,6 +59,17 @@ public class TranslatorFragment extends Fragment {
             public void onClick(View v) {
                 mInputText.setText("");
                 mTranslatedText.setText("");
+            }
+        });
+
+        //TODO: add logic to swap languages
+        final ImageButton mSwapButton = (ImageButton) root.findViewById(R.id.swap_languages_button);
+        mSwapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tempText = textFrom.getText().toString();
+                textFrom.setText(textTo.getText());
+                textTo.setText(tempText);
             }
         });
 
