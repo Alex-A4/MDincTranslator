@@ -5,4 +5,5 @@
     <string name="translator_tab">Translator</string>
     <string name="dialogs_tab">Dialogs</string>
     <string name="settings_title">Settings</string>
+    <string name="check_internet">Check your internet connection</string>
 </resources>
