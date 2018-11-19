@@ -14,14 +14,24 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.alexa4.mdinctranslater.R;
+import com.alexa4.mdinctranslater.presenters.DialogPresenter;
 
 import java.util.ArrayList;
 
+//TODO: add saving of dialogs after rotating
+
+/**
+ * UI class providing dialog (system 1-1) between 2 people
+ * @author alexa4
+ */
 public class DialogFragment extends Fragment {
     private RecyclerView mDialogView;
-    private ArrayList<String> mMessages;
     private DialogAdapter mDialogAdapter;
 
+    //List of messages
+    private ArrayList<String> mMessages;
+
+    private DialogPresenter mPresenter;
 
     /**
      * Initializing messages list
@@ -30,7 +40,8 @@ public class DialogFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mMessages = new ArrayList<>();
+        mPresenter = new DialogPresenter(this);
+        mMessages = mPresenter.getMessages();
         mDialogAdapter = new DialogAdapter();
     }
 
@@ -158,5 +169,16 @@ public class DialogFragment extends Fragment {
          * Method to set text for dialog item
          */
         public abstract void setText(String text);
+    }
+
+    /**
+     * Clearing links
+     */
+    @Override
+    public void onStop() {
+        super.onStop();
+        mPresenter.detach();
+        mMessages = null;
+        mPresenter = null;
     }
 }
