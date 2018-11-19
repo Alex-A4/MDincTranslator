@@ -83,15 +83,30 @@ public class MainActivity extends AppCompatActivity {
      * @param fragmentsPager
      */
     private void initViewPager(ViewPager fragmentsPager) {
-        TranslatePagerAdapter adapter = new TranslatePagerAdapter(getSupportFragmentManager());
+        final TranslatePagerAdapter adapter = new TranslatePagerAdapter(getSupportFragmentManager());
         adapter.addFragment(translateFragment);
         adapter.addFragment(dialogFragment);
         fragmentsPager.setAdapter(adapter);
+        getSupportActionBar().setTitle(adapter.getPageTitle(0));
+        fragmentsPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                getSupportActionBar().setTitle(adapter.getPageTitle(i));
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+            }
+        });
     }
 
 
     class TranslatePagerAdapter extends FragmentPagerAdapter {
-        ArrayList<Fragment> mFragments;
+        private ArrayList<Fragment> mFragments;
 
         public TranslatePagerAdapter(FragmentManager fm) {
             super(fm);
