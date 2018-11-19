@@ -4,4 +4,5 @@
     <string name="enter_text_to_translate">Enter text to translate</string>
     <string name="translator_tab">Translator</string>
     <string name="dialogs_tab">Dialogs</string>
+    <string name="settings_title">Settings</string>
 </resources>
