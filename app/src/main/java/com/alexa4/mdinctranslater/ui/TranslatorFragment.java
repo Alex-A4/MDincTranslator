@@ -7,11 +7,13 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.AppCompatTextView;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.alexa4.mdinctranslater.R;
 
@@ -53,7 +55,26 @@ public class TranslatorFragment extends Fragment {
             }
         });
 
+        setHasOptionsMenu(true);
 
         return root;
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.translator_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            //TODO: Add logic to start settings fragment
+            case R.id.translator_settings:
+                Toast.makeText(getContext(), "Settings clicked", Toast.LENGTH_SHORT).show();
+                return true;
+
+            default: return false;
+        }
     }
 }
