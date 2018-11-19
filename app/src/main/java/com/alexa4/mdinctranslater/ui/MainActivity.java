@@ -1,7 +1,9 @@
 package com.alexa4.mdinctranslater.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +12,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.alexa4.mdinctranslater.R;
 
@@ -21,7 +25,10 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private static final String translateTag = "TRANSLATE";
     private static final String dialogTag = "DIALOG";
+    private int mCurrentHeight;
+    private int mOldHeight;
 
+    private View mRootView;
     private TranslatorFragment translateFragment;
     private DialogFragment dialogFragment;
 
@@ -30,6 +37,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mRootView = findViewById(R.id.main_activity_root_layout);
+        mRootView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View v, int left, int top, int right, int bottom,
+                                       int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                mOldHeight = oldBottom;
+                mCurrentHeight = bottom;
+            }
+        });
 
         initFragments();
 
@@ -100,6 +117,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int i) {
                 getSupportActionBar().setTitle(adapter.getPageTitle(i));
+                //If the keyboard is shown then hide it
+                if (mCurrentHeight < mOldHeight) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                }
             }
 
             @Override
