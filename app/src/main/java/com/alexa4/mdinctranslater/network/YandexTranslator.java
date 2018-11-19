@@ -22,17 +22,23 @@ import javax.net.ssl.HttpsURLConnection;
 public class YandexTranslator {
     private static final String API_KEY = "trnsl.1.1.20181119T161854Z.ebaf45211b68759c.1cfc251482d621c713f8095d4c9428e3a70a5248";
 
-    public static void translateText(String text, String langs) {
-        new AsyncTranslate(text, langs).execute();
+    public interface TranslateCallback {
+        void sendTranslatedText(String text);
+    }
+
+    public static void translateText(String text, String langs, TranslateCallback callback) {
+        new AsyncTranslate(text, langs, callback).execute();
     }
 
     private static class AsyncTranslate extends AsyncTask<Void, Void, String> {
         private String mText;
         private String mLangs;
+        private TranslateCallback mCallback;
 
-        public AsyncTranslate(String text, String langs) {
+        public AsyncTranslate(String text, String langs, TranslateCallback callback) {
             mText = text;
             mLangs = langs;
+            mCallback = callback;
         }
 
         @Override
@@ -50,8 +56,8 @@ public class YandexTranslator {
         }
 
         @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
+        protected void onPostExecute(String text) {
+            mCallback.sendTranslatedText(text);
         }
 
         /**
