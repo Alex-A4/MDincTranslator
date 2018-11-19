@@ -87,7 +87,11 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(translateFragment);
         adapter.addFragment(dialogFragment);
         fragmentsPager.setAdapter(adapter);
+
+        //Set Toolbar title of first fragment
         getSupportActionBar().setTitle(adapter.getPageTitle(0));
+
+        //Listener to change Toolbar title
         fragmentsPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
@@ -106,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     class TranslatePagerAdapter extends FragmentPagerAdapter {
+        //List of main fragments
         private ArrayList<Fragment> mFragments;
 
         public TranslatePagerAdapter(FragmentManager fm) {
@@ -144,6 +149,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Override backPressed button to close activity when fragmentStack is empty
+     */
     @Override
     public void onBackPressed() {
         FragmentManager manager = getSupportFragmentManager();
