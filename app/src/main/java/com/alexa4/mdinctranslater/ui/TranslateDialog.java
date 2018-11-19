@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,6 +18,7 @@ import com.alexa4.mdinctranslater.R;
 public class TranslateDialog extends Fragment {
     private TextInputEditText mInputText;
     private AppCompatTextView mTextView;
+    private AppCompatImageButton mTranslateButton;
 
 
     @Nullable
@@ -24,21 +26,15 @@ public class TranslateDialog extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.translate_fragment, container, false);
 
+        mInputText = (TextInputEditText) root.findViewById(R.id.text_to_translate);
+
         mTextView = (AppCompatTextView) root.findViewById(R.id.translated_text);
 
-        mInputText = (TextInputEditText) root.findViewById(R.id.text_to_translate);
-        //Listener to translate text after user stop writing
-        mInputText.addTextChangedListener(new TextWatcher() {
+        mTranslateButton = (AppCompatImageButton) root.findViewById(R.id.translate_button);
+        mTranslateButton.setOnClickListener(new View.OnClickListener() {
+            //TODO: add logic to translate text
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
+            public void onClick(View v) {
                 String text = mInputText.getText().toString().trim();
 
                 if (!text.equals("")) {
@@ -46,6 +42,7 @@ public class TranslateDialog extends Fragment {
                 }
             }
         });
+
 
         return root;
     }
