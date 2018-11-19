@@ -17,7 +17,7 @@ import com.alexa4.mdinctranslater.R;
 
 public class TranslateDialog extends Fragment {
     private TextInputEditText mInputText;
-    private AppCompatTextView mTextView;
+    private AppCompatTextView mTranslatedText;
     private AppCompatImageButton mTranslateButton;
 
 
@@ -28,7 +28,7 @@ public class TranslateDialog extends Fragment {
 
         mInputText = (TextInputEditText) root.findViewById(R.id.text_to_translate);
 
-        mTextView = (AppCompatTextView) root.findViewById(R.id.translated_text);
+        mTranslatedText = (AppCompatTextView) root.findViewById(R.id.translated_text);
 
         mTranslateButton = (AppCompatImageButton) root.findViewById(R.id.translate_button);
         mTranslateButton.setOnClickListener(new View.OnClickListener() {
@@ -38,7 +38,7 @@ public class TranslateDialog extends Fragment {
                 String text = mInputText.getText().toString().trim();
 
                 if (!text.equals("")) {
-                    mTextView.setText(text);
+                    mTranslatedText.setText(text);
                 }
             }
         });
