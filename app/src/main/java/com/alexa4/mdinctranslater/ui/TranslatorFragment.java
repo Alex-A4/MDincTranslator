@@ -95,6 +95,7 @@ public class TranslatorFragment extends Fragment {
             }
         });
 
+        updateLanguagesLayout();
         setHasOptionsMenu(true);
 
         return root;
