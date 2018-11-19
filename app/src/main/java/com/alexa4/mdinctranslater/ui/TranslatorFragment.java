@@ -42,6 +42,7 @@ public class TranslatorFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
+        mPresenter.detach();
         mPresenter = null;
     }
 
@@ -89,7 +90,7 @@ public class TranslatorFragment extends Fragment {
         mSwapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.swapTranslateLanguages();
+                mPresenter.swapTargetLanguages();
                 updateLanguagesLayout();
             }
         });
@@ -103,8 +104,8 @@ public class TranslatorFragment extends Fragment {
      * Update the current selected languages
      */
     private void updateLanguagesLayout() {
-        mTextFrom.setText(mPresenter.getLanguageFrom());
-        mTextTo.setText(mPresenter.getLanguageTo());
+        mTextFrom.setText(mPresenter.getLanguageNameOfFromText());
+        mTextTo.setText(mPresenter.getLanguageNameOfToText());
     }
 
 
