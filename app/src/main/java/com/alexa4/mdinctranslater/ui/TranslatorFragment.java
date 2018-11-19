@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.alexa4.mdinctranslater.R;
 import com.alexa4.mdinctranslater.network.YandexTranslator;
+import com.alexa4.mdinctranslater.presenters.TranslatorPresenter;
 
 public class TranslatorFragment extends Fragment {
     private TextInputEditText mInputText;
@@ -29,6 +30,19 @@ public class TranslatorFragment extends Fragment {
     private AppCompatImageButton mTranslateButton;
     private AppCompatImageButton mClearAllButton;
 
+    private TranslatorPresenter mPresenter;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mPresenter = new TranslatorPresenter(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mPresenter = null;
+    }
 
     @Nullable
     @Override
@@ -54,13 +68,7 @@ public class TranslatorFragment extends Fragment {
 
                 if (isNetworkConnected()) {
                     if (!text.equals(""))
-                        YandexTranslator.translateText(text, "ru-en",
-                                new YandexTranslator.TranslateCallback() {
-                                    @Override
-                                    public void sendTranslatedText(String text) {
-                                        mTranslatedText.setText(text);
-                                    }
-                                });
+                        mPresenter.getTranslatedText(text);
                 } else Toast.makeText(getContext(), R.string.check_internet, Toast.LENGTH_SHORT).show();
 
             }
@@ -119,5 +127,14 @@ public class TranslatorFragment extends Fragment {
 
             default: return false;
         }
+    }
+
+
+    /**
+     * Set the translated text to special TextView
+     * @param translatedText the translated text
+     */
+    public void setTranslatedText(String translatedText) {
+        mTranslatedText.setText(translatedText);
     }
 }
