@@ -3,4 +3,6 @@
     <string name="app_name">MDinc Переводчик</string>
     <string name="dialog_input_hint">Введите сообщение</string>
     <string name="enter_text_to_translate">Введите текст для перевода</string>
+    <string name="translator_tab">Переводчик</string>
+    <string name="dialogs_tab">Диалоги</string>
 </resources>

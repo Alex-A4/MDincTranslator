@@ -2,4 +2,6 @@
     <string name="app_name">MDinc Translator</string>
     <string name="dialog_input_hint">Input text</string>
     <string name="enter_text_to_translate">Enter text to translate</string>
+    <string name="translator_tab">Translator</string>
+    <string name="dialogs_tab">Dialogs</string>
 </resources>
