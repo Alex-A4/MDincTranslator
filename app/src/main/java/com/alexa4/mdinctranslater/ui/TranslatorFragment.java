@@ -1,5 +1,8 @@
 package com.alexa4.mdinctranslater.ui;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -29,7 +32,8 @@ public class TranslatorFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.translate_fragment, container, false);
 
         //TODO: add logic to select languages
@@ -48,15 +52,17 @@ public class TranslatorFragment extends Fragment {
             public void onClick(View v) {
                 String text = mInputText.getText().toString().trim();
 
-                if (!text.equals("")) {
-                    YandexTranslator.translateText(text, "ru-en",
-                            new YandexTranslator.TranslateCallback() {
-                        @Override
-                        public void sendTranslatedText(String text) {
-                            mTranslatedText.setText(text);
-                        }
-                    });
-                }
+                if (isNetworkConnected()) {
+                    if (!text.equals(""))
+                        YandexTranslator.translateText(text, "ru-en",
+                                new YandexTranslator.TranslateCallback() {
+                                    @Override
+                                    public void sendTranslatedText(String text) {
+                                        mTranslatedText.setText(text);
+                                    }
+                                });
+                } else Toast.makeText(getContext(), R.string.check_internet, Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -83,6 +89,18 @@ public class TranslatorFragment extends Fragment {
         setHasOptionsMenu(true);
 
         return root;
+    }
+
+
+    /**
+     * Check network connection
+     * @return is the internet enabled
+     */
+    private boolean isNetworkConnected(){
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity()
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 
