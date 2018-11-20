@@ -3,5 +3,5 @@
     <dimen name="dialog_text_margin">8dp</dimen>
     <dimen name="translate_text_height">170dp</dimen>
     <dimen name="translate_text_margin_left_right">16dp</dimen>
-    <dimen name="translate_button_margin_top_bottom">10dp</dimen>
+    <dimen name="translate_button_margin_top_bottom">4dp</dimen>
 </resources>
