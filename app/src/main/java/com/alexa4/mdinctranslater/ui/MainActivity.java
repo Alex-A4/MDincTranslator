@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Listener to monitor screen changes (needs to check keyboard state)
         mRootView = findViewById(R.id.main_activity_root_layout);
         mRootView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
             @Override
