@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.alexa4.mdinctranslater.R;
+import com.alexa4.mdinctranslater.adapters.TranslatePagerAdapter;
 
 import java.util.ArrayList;
 
@@ -116,7 +117,8 @@ public class MainActivity extends AppCompatActivity {
      * @param fragmentsPager
      */
     private void initViewPager(ViewPager fragmentsPager) {
-        final TranslatePagerAdapter adapter = new TranslatePagerAdapter(getSupportFragmentManager());
+        final TranslatePagerAdapter adapter =
+                new TranslatePagerAdapter(getSupportFragmentManager(), this);
         adapter.addFragment(translateFragment);
         adapter.addFragment(dialogFragment);
         fragmentsPager.setAdapter(adapter);
@@ -145,46 +147,6 @@ public class MainActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int i) {
             }
         });
-    }
-
-
-    class TranslatePagerAdapter extends FragmentPagerAdapter {
-        //List of main fragments
-        private ArrayList<Fragment> mFragments;
-
-        public TranslatePagerAdapter(FragmentManager fm) {
-            super(fm);
-            mFragments = new ArrayList<>();
-        }
-
-        @Override
-        public Fragment getItem(int i) {
-            return mFragments.get(i);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragments.size();
-        }
-
-
-        /**
-         * Add fragment to list
-         * @param fragment the added fragment
-         */
-        public void addFragment(Fragment fragment) {
-            mFragments.add(fragment);
-        }
-
-
-        public String getTitleByPosition(int position) {
-            switch (position) {
-                case 0: return getString(R.string.translator_tab);
-                case 1: return getString(R.string.dialogs_tab);
-                default: return "Error";
-            }
-        }
-
     }
 
     /**
