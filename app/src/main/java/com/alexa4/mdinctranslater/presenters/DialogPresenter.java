@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class DialogPresenter {
     private DialogFragment mView;
+    private MessagesStore mStore;
 
     /**
      * Initialize presenter by View Fragment
@@ -18,6 +19,7 @@ public class DialogPresenter {
      */
     public DialogPresenter(DialogFragment dialogFragment) {
         mView = dialogFragment;
+        mStore = MessagesStore.getStore();
     }
 
     /**
@@ -25,6 +27,7 @@ public class DialogPresenter {
      */
     public void detach() {
         mView = null;
+        mStore = null;
     }
 
     /**
@@ -32,6 +35,6 @@ public class DialogPresenter {
      * @return the messages
      */
     public ArrayList<String> getMessages() {
-        return MessagesStore.getStore().getMessages();
+        return mStore.getMessages();
     }
 }
