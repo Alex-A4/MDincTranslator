@@ -23,8 +23,6 @@ import com.alexa4.mdinctranslater.presenters.DialogPresenter;
 
 import java.util.ArrayList;
 
-//TODO: add saving of dialogs after rotating
-
 /**
  * UI class providing dialog (system 1-1) between 2 people
  * @author alexa4
