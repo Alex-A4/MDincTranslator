@@ -1,10 +1,12 @@
 package com.alexa4.mdinctranslater.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -35,6 +37,18 @@ public class DialogFragment extends Fragment {
     private ArrayList<String> mMessages;
 
     private DialogPresenter mPresenter;
+    private AppCompatActivity mActivity;
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mActivity = (AppCompatActivity) context;
+        } catch (ClassCastException e) {
+            throw new RuntimeException("Activity must be AppCompat");
+        }
+    }
 
     /**
      * Initializing messages list
