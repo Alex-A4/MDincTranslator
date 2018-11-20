@@ -37,18 +37,6 @@ public class DialogFragment extends Fragment {
     private ArrayList<String> mMessages;
 
     private DialogPresenter mPresenter;
-    private AppCompatActivity mActivity;
-
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        try {
-            mActivity = (AppCompatActivity) context;
-        } catch (ClassCastException e) {
-            throw new RuntimeException("Activity must be AppCompat");
-        }
-    }
 
     /**
      * Initializing messages list
@@ -119,5 +107,9 @@ public class DialogFragment extends Fragment {
 
             default:return false;
         }
+    }
+
+    public String updateSutitle() {
+        return mPresenter.getTranslateLanguagesSubtitle();
     }
 }
