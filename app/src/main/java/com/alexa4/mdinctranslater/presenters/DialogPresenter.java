@@ -37,4 +37,15 @@ public class DialogPresenter {
     public ArrayList<String> getMessages() {
         return mStore.getMessages();
     }
+
+
+    /**
+     * Build the string of translated languages
+     * for example Russian - English
+     * @return the languages subtitle
+     */
+    public String getTranslateLanguagesSubtitle() {
+        return mStore.getLanguageFrom().getLanguageName()
+                + " - " + mStore.getLanguageTo().getLanguageName();
+    }
 }
