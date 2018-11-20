@@ -63,7 +63,6 @@ public class TranslatorFragment extends Fragment {
 
         mTranslateButton = (AppCompatImageButton) root.findViewById(R.id.translate_button);
         mTranslateButton.setOnClickListener(new View.OnClickListener() {
-            //TODO: add logic to translate text
             @Override
             public void onClick(View v) {
                 String text = mInputText.getText().toString().trim();
@@ -85,7 +84,7 @@ public class TranslatorFragment extends Fragment {
             }
         });
 
-        //TODO: add logic to swap languages
+        //TODO: add logic to swap text into InputText and Translated text and translate the first
         final ImageButton mSwapButton = (ImageButton) root.findViewById(R.id.swap_languages_button);
         mSwapButton.setOnClickListener(new View.OnClickListener() {
             @Override
