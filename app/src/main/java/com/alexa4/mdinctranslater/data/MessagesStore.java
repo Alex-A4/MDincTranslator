@@ -27,12 +27,4 @@ public class MessagesStore {
     public ArrayList<String> getMessages() {
         return mMessages;
     }
-
-    /**
-     * Add message to list
-     * @param msg
-     */
-    public void addMessage(String msg) {
-        mMessages.add(msg);
-    }
 }
