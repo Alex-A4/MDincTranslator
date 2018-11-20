@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     private int mCurrentHeight;
     private int mOldHeight;
 
+    //The array which contains icons for tabs
+    private int[] mIconsId = {R.drawable.ic_translator_icon, R.drawable.ic_dialog_icon};
+
     private View mRootView;
     private TranslatorFragment translateFragment;
     private DialogFragment dialogFragment;
@@ -76,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+        //Setting icons for tabs
+        for (int i = 0; i < mIconsId.length; i++)
+            tabLayout.getTabAt(i).setIcon(mIconsId[i]);
 
 
     }
@@ -106,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentsPager.setAdapter(adapter);
 
         //Set Toolbar title of first fragment
-        getSupportActionBar().setTitle(adapter.getPageTitle(0));
+        getSupportActionBar().setTitle(adapter.getTitleByPosition(0));
 
         //Listener to change Toolbar title
         fragmentsPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -116,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int i) {
-                getSupportActionBar().setTitle(adapter.getPageTitle(i));
+                getSupportActionBar().setTitle(adapter.getTitleByPosition(i));
                 //If the keyboard is shown then hide it
                 if (mCurrentHeight < mOldHeight) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -160,15 +166,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        @Nullable
-        @Override
-        public CharSequence getPageTitle(int position) {
+        public String getTitleByPosition(int position) {
             switch (position) {
                 case 0: return getString(R.string.translator_tab);
                 case 1: return getString(R.string.dialogs_tab);
                 default: return "Error";
             }
         }
+
     }
 
     /**
