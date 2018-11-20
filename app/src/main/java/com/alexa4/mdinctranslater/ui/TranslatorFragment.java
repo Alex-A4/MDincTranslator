@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.button.MaterialButton;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatImageButton;
@@ -26,7 +27,7 @@ import com.alexa4.mdinctranslater.presenters.TranslatorPresenter;
 public class TranslatorFragment extends Fragment {
     private TextInputEditText mInputText;
     private AppCompatTextView mTranslatedText;
-    private AppCompatImageButton mTranslateButton;
+    private MaterialButton mTranslateButton;
     private AppCompatImageButton mClearAllButton;
     private TextView mTextTo;
     private TextView mTextFrom;
@@ -61,7 +62,7 @@ public class TranslatorFragment extends Fragment {
 
         mTranslatedText = (AppCompatTextView) root.findViewById(R.id.translated_text);
 
-        mTranslateButton = (AppCompatImageButton) root.findViewById(R.id.translate_button);
+        mTranslateButton = (MaterialButton) root.findViewById(R.id.translate_button);
         mTranslateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
