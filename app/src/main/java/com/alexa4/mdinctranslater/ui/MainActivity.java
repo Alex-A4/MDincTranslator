@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 fragmentsPager.setCurrentItem(tab.getPosition());
+                updateSubtitle(tab.getPosition());
                 Log.i("TAB_ID", "Tab " + tab.getPosition());
             }
 
@@ -85,6 +86,14 @@ public class MainActivity extends AppCompatActivity {
             tabLayout.getTabAt(i).setIcon(mIconsId[i]);
 
 
+    }
+
+    private void updateSubtitle(int position) {
+        String subtitle = null;
+        if (position == 1)
+            subtitle = dialogFragment.updateSutitle();
+
+        getSupportActionBar().setSubtitle(subtitle);
     }
 
     /**
@@ -114,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Set Toolbar title of first fragment
         getSupportActionBar().setTitle(adapter.getTitleByPosition(0));
+        updateSubtitle(0);
 
         //Listener to change Toolbar title
         fragmentsPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
