@@ -1,6 +1,9 @@
 package com.alexa4.mdinctranslater.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -41,12 +44,13 @@ public class TranslatorFragment extends Fragment {
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
+    public void onDestroy() {
+        super.onDestroy();
         mPresenter.detach();
         mPresenter = null;
     }
 
+    @SuppressLint("RestrictedApi")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -59,6 +63,9 @@ public class TranslatorFragment extends Fragment {
         mTextTo = (TextView)  root.findViewById(R.id.to_language_text);
 
         mInputText = (TextInputEditText) root.findViewById(R.id.text_to_translate);
+        //Setting transparent color of underline
+        ColorStateList colorStateList = ColorStateList.valueOf(Color.TRANSPARENT);
+        mInputText.setSupportBackgroundTintList(colorStateList);
 
         mTranslatedText = (AppCompatTextView) root.findViewById(R.id.translated_text);
 
