@@ -1,6 +1,7 @@
 package com.alexa4.mdinctranslater.data;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Singleton store to collect Yandex languages pairs
@@ -27,8 +28,9 @@ public class LanguagesStore {
 
     private LanguagesStore() {
         mPairs = new ArrayList<>();
-        mLanguageFrom = new LanguageInfo("Русский", "ru");
-        mLanguageTo = new LanguageInfo("Английский", "en");
+        fillList();
+        mLanguageFrom = mPairs.get(0);
+        mLanguageTo = mPairs.get(1);
     }
 
     public static LanguagesStore getStore() {
@@ -43,6 +45,28 @@ public class LanguagesStore {
     }
 
 
+    private void fillList() {
+        mPairs.addAll(
+                Arrays.asList(
+                new LanguageInfo("Русский", "ru"),
+                new LanguageInfo("Английский", "en"),
+                new LanguageInfo("Украинский", "uk"),
+                new LanguageInfo("Японский", "ja"),
+                new LanguageInfo("Малайсийский", "ms"),
+                new LanguageInfo("Корейский", "ko"),
+                new LanguageInfo("Китайский", "zh"),
+                new LanguageInfo("Казахский", "kk"),
+                new LanguageInfo("Испанский", "es"),
+                new LanguageInfo("Итальянский", "it"),
+                new LanguageInfo("Узбекский", "uz"),
+                new LanguageInfo("Финский", "fi"),
+                new LanguageInfo("Исландский", "is"),
+                new LanguageInfo("Датский", "da"),
+                new LanguageInfo("Французский", "fr"),
+                new LanguageInfo("Шведский", "sv"),
+                new LanguageInfo("Чешский", "cs"))
+        );
+    }
     /**
      * Swap the target languages
      */
