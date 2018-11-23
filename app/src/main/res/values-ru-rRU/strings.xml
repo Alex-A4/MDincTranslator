@@ -10,4 +10,8 @@
     <string name="translated_thanks_yandex">Переведено при помощи Яндекс.Переводчик</string>
     <string name="dialog_more">Ещё</string>
     <string name="translate_button_text">Перевести</string>
+    <string name="choose_langs">Выбрать язык</string>
+    <string name="left_talker">Выберите язык для левого собеседника</string>
+    <string name="right_talker">Выберите язык для правого собеседника</string>
+    <string name="choose_dialog_toolbar_text">Выберите языки</string>
 </resources>

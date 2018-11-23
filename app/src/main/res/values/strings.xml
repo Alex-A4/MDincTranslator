@@ -9,4 +9,8 @@
     <string name="translated_thanks_yandex">Translated thaks to Yandex.Translate</string>
     <string name="dialog_more">More</string>
     <string name="translate_button_text">Translate</string>
+    <string name="choose_langs">Choose languages</string>
+    <string name="left_talker">Choose language for left talker:</string>
+    <string name="right_talker">Choose language for right talker:</string>
+    <string name="choose_dialog_toolbar_text">Select languages</string>
 </resources>

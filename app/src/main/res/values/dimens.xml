@@ -4,4 +4,5 @@
     <dimen name="translate_text_height">170dp</dimen>
     <dimen name="translate_text_margin_left_right">16dp</dimen>
     <dimen name="translate_button_margin_top_bottom">4dp</dimen>
+    <dimen name="choose_lang_selected_text_margin_top_bottom">12dp</dimen>
 </resources>
