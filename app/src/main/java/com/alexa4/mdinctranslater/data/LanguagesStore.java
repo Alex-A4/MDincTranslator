@@ -67,6 +67,22 @@ public class LanguagesStore {
                 new LanguageInfo("Чешский", "cs"))
         );
     }
+
+
+    /**
+     * Getting language by its name
+     * @param name the name of language
+     * @return the language or default lang (russian)
+     */
+    public LanguageInfo getLangByName(String name) {
+        for (LanguageInfo info: mPairs)
+            if (name.equals(info.getLanguageName()))
+                return info;
+
+        return mPairs.get(0);
+    }
+
+
     /**
      * Swap the target languages
      */
