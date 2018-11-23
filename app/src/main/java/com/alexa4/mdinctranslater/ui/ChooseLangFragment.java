@@ -14,14 +14,13 @@ import android.widget.TextView;
 import com.alexa4.mdinctranslater.R;
 import com.alexa4.mdinctranslater.adapters.ChooseDialogAdapter;
 import com.alexa4.mdinctranslater.adapters.ChooseDialogItemClickListener;
+import com.alexa4.mdinctranslater.data.LanguageInfo;
+import com.alexa4.mdinctranslater.data.MessagesStore;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ChooseLangFragment extends Fragment {
-    private ArrayList<String> mLangs = new ArrayList<>(Arrays.asList("Русский", "Английский",
-            "Украинский", "Итальянский", "1", "2", "3",
-            "4", "5", "6", "7", "8", "9", "10", "11", "12"));
+    private ArrayList<LanguageInfo> mLangs;
 
     private RecyclerView mLangsLeftResView;
     private RecyclerView mLangsRightResView;
@@ -29,6 +28,7 @@ public class ChooseLangFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mLangs = MessagesStore.getStore().getPairs();
     }
 
     @Nullable
@@ -38,22 +38,13 @@ public class ChooseLangFragment extends Fragment {
         View root = inflater.inflate(R.layout.dialog_choose_lang_layout, container, false);
 
         final TextView leftSelectedText = (TextView) root.findViewById(R.id.left_selected_lang);
+        leftSelectedText.setText(MessagesStore.getStore().getLanguageFrom().getLanguageName());
+
         final TextView rightSelectedText = (TextView) root.findViewById(R.id.right_selected_lang);
+        rightSelectedText.setText(MessagesStore.getStore().getLanguageTo().getLanguageName());
 
         mLangsLeftResView = (RecyclerView) root.findViewById(R.id.left_talker_langs);
         mLangsRightResView = (RecyclerView) root.findViewById(R.id.right_talker_langs);
-
-
-        //Initializing right recyclerView
-        mLangsRightResView.setLayoutManager(new LinearLayoutManager(getContext(),
-                LinearLayoutManager.VERTICAL, false));
-        mLangsRightResView.setAdapter(new ChooseDialogAdapter(mLangs, getContext(),
-                new ChooseDialogItemClickListener() {
-                    @Override
-                    public void onClick(TextView view) {
-                        rightSelectedText.setText(view.getText());
-                    }
-                }));
 
 
 
@@ -64,12 +55,39 @@ public class ChooseLangFragment extends Fragment {
                 new ChooseDialogItemClickListener() {
                     @Override
                     public void onClick(TextView view) {
-                        leftSelectedText.setText(view.getText());
+                        //Setting langFrom to store
+                        String name = view.getText().toString();
+                        MessagesStore store = MessagesStore.getStore();
+
+                        store.setLanguageFrom(store.getLangByName(name));
+                        leftSelectedText.setText(name);
                     }
                 }));
 
 
+        //Initializing right recyclerView
+        mLangsRightResView.setLayoutManager(new LinearLayoutManager(getContext(),
+                LinearLayoutManager.VERTICAL, false));
+        mLangsRightResView.setAdapter(new ChooseDialogAdapter(mLangs, getContext(),
+                new ChooseDialogItemClickListener() {
+                    @Override
+                    public void onClick(TextView view) {
+                        //Setting langTo to store
+                        String name = view.getText().toString();
+                        MessagesStore store = MessagesStore.getStore();
+
+                        store.setLanguageTo(store.getLangByName(name));
+                        rightSelectedText.setText(name);
+                    }
+                }));
+
 
         return root;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mLangs = null;
     }
 }
