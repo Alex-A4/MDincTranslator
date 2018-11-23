@@ -16,11 +16,17 @@ public class LanguagesStore {
     public LanguageInfo getLanguageFrom() {
         return mLanguageFrom;
     }
+    public void setLanguageFrom(LanguageInfo languageFrom) {
+        mLanguageFrom = languageFrom;
+    }
 
     //The language to which need translate
     private LanguageInfo mLanguageTo;
     public LanguageInfo getLanguageTo() {
         return mLanguageTo;
+    }
+    public void setLanguageTo(LanguageInfo languageTo) {
+        mLanguageTo = languageTo;
     }
 
     //Singleton instance of store
