@@ -23,4 +23,9 @@ public class LanguageInfo {
     public String getLanguageCode() {
         return mLanguageCode;
     }
+
+    @Override
+    public String toString() {
+        return mLanguageName + " " + mLanguageCode;
+    }
 }
