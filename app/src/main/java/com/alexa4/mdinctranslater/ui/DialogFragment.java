@@ -1,5 +1,7 @@
 package com.alexa4.mdinctranslater.ui;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.alexa4.mdinctranslater.R;
 import com.alexa4.mdinctranslater.adapters.DialogAdapter;
@@ -29,6 +30,8 @@ import java.util.ArrayList;
 public class DialogFragment extends Fragment {
     private RecyclerView mDialogView;
     private DialogAdapter mDialogAdapter;
+
+    private ChooseLangFragment mChooseLang;
 
     //List of messages
     private ArrayList<String> mMessages;
@@ -45,6 +48,8 @@ public class DialogFragment extends Fragment {
         mPresenter = new DialogPresenter(this);
         mMessages = mPresenter.getMessages();
         mDialogAdapter = new DialogAdapter(mMessages, getContext());
+
+        mChooseLang = new ChooseLangFragment();
     }
 
     /**
@@ -62,6 +67,7 @@ public class DialogFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         View root = inflater.inflate(R.layout.dialog_fragment, container, false);
 
         mDialogView = (RecyclerView) root.findViewById(R.id.dialog_recyclerview);
@@ -99,7 +105,7 @@ public class DialogFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.dialog_more:
-                Toast.makeText(getContext(), "Dialog more selected!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), ChooseLangActivity.class));
                 return true;
 
             default:return false;
