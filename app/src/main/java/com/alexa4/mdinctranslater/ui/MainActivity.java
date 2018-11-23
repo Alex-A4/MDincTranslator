@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         initFragments();
 
         //Setting toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         //Initializing ViewPager
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void updateSubtitle(int position) {
+    public void updateSubtitle(int position) {
         String subtitle = null;
         if (position == 1)
             subtitle = dialogFragment.updateSutitle();
