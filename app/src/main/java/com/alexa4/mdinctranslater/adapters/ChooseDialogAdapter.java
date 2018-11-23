@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.alexa4.mdinctranslater.R;
+import com.alexa4.mdinctranslater.data.LanguageInfo;
 
 import java.util.ArrayList;
 
@@ -18,11 +19,11 @@ import java.util.ArrayList;
  * @author alexa4
  */
 public class ChooseDialogAdapter extends RecyclerView.Adapter<ChooseDialogAdapter.ChooseViewHolder> {
-    private ArrayList<String> mLanguagesLists;
+    private ArrayList<LanguageInfo> mLanguagesLists;
     private Context mContext;
     private ChooseDialogItemClickListener mListener;
 
-    public ChooseDialogAdapter(ArrayList<String> languages, Context context,
+    public ChooseDialogAdapter(ArrayList<LanguageInfo> languages, Context context,
                                ChooseDialogItemClickListener listener) {
         mLanguagesLists = languages;
         mContext = context;
@@ -39,7 +40,7 @@ public class ChooseDialogAdapter extends RecyclerView.Adapter<ChooseDialogAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ChooseViewHolder holder, int position) {
-        holder.mText.setText(mLanguagesLists.get(position));
+        holder.mText.setText(mLanguagesLists.get(position).getLanguageName());
     }
 
     @Override
