@@ -28,8 +28,11 @@ import java.util.ArrayList;
  * @author alexa4
  */
 public class DialogFragment extends Fragment {
+    private static final int CHOOSE_LANG_CODE = 10;
     private RecyclerView mDialogView;
     private DialogAdapter mDialogAdapter;
+
+    private MainActivity mActivity;
 
     private ChooseLangFragment mChooseLang;
 
@@ -37,6 +40,12 @@ public class DialogFragment extends Fragment {
     private ArrayList<String> mMessages;
 
     private DialogPresenter mPresenter;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mActivity = (MainActivity) context;
+    }
 
     /**
      * Initializing messages list
@@ -105,10 +114,21 @@ public class DialogFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.dialog_more:
-                startActivity(new Intent(getContext(), ChooseLangActivity.class));
+                startActivityForResult(new Intent(getContext(), ChooseLangActivity.class),
+                        CHOOSE_LANG_CODE);
                 return true;
 
             default:return false;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 0) {
+            if (requestCode == CHOOSE_LANG_CODE) {
+                mActivity.updateSubtitle(1);
+            }
         }
     }
 
