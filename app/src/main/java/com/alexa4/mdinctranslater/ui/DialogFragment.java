@@ -19,9 +19,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.alexa4.mdinctranslater.R;
 import com.alexa4.mdinctranslater.adapters.DialogAdapter;
+import com.alexa4.mdinctranslater.network.YandexTranslator;
 import com.alexa4.mdinctranslater.presenters.DialogPresenter;
 
 import java.util.ArrayList;
@@ -94,13 +96,22 @@ public class DialogFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String text = mMessageText.getText().toString().trim();
-                if (!text.equals("")) {
-                    mMessages.add(text);
-                    mMessageText.setText("");
-                    mPresenter.swapTargetLanguages();
-                    updateInputTextHint();
-                    mDialogAdapter.notifyItemChanged(mMessages.size());
-                }
+                if (!text.equals(""))
+                    if (isNetworkConnected()) {
+                        //Translate the text
+                        YandexTranslator.translateText(text, mPresenter.getLangsPairForTranslator(),
+                                new YandexTranslator.TranslateCallback() {
+                                    @Override
+                                    public void sendTranslatedText(String text) {
+                                        mMessages.add(text);
+                                        mDialogAdapter.notifyItemChanged(mMessages.size());
+                                    }
+                                });
+
+                        mMessageText.setText("");
+                        mPresenter.swapTargetLanguages();
+                        updateInputTextHint();
+                    } else Toast.makeText(getContext(), R.string.check_internet,Toast.LENGTH_SHORT).show();
             }
         });
 
