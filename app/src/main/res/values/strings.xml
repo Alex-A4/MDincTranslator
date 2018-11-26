@@ -13,4 +13,5 @@
     <string name="left_talker">Choose language for left interlocutor:</string>
     <string name="right_talker">Choose language for right interlocutor:</string>
     <string name="choose_dialog_toolbar_text">Select languages</string>
+    <string name="write_message_on">Write %1$s text</string>
 </resources>
