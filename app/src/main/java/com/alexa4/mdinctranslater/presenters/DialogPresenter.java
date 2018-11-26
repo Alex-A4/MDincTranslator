@@ -59,4 +59,12 @@ public class DialogPresenter {
     public void swapTargetLanguages() {
         mStore.swapTargetLanguages();
     }
+
+    /**
+     * String get languages pair for translator
+     * @return
+     */
+    public String getLangsPairForTranslator() {
+        return mStore.createLangToTranslate();
+    }
 }
