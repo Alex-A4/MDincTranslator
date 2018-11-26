@@ -132,7 +132,7 @@ public class DialogFragment extends Fragment {
 
     }
 
-    public String updateSutitle() {
+    public String updateSubtitle() {
         return mPresenter.getTranslateLanguagesSubtitle();
     }
 }

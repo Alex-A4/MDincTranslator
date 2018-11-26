@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     public void updateSubtitle(int position) {
         String subtitle = null;
         if (position == 1)
-            subtitle = dialogFragment.updateSutitle();
+            subtitle = dialogFragment.updateSubtitle();
 
         getSupportActionBar().setSubtitle(subtitle);
     }
