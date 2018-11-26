@@ -89,7 +89,7 @@ public class DialogFragment extends Fragment {
 
         final TextInputEditText messageText = (TextInputEditText) root.findViewById(R.id.dialog_input_text);
 
-        ImageButton sendMessage = (ImageButton) root.findViewById(R.id.send_button);
+        final ImageButton sendMessage = (ImageButton) root.findViewById(R.id.send_button);
         sendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
