@@ -49,6 +49,10 @@ public class DialogPresenter {
                 + " - " + mStore.getLanguageTo().getLanguageName();
     }
 
+    public String getNameOfLanguageFrom() {
+        return mStore.getLanguageFrom().getLanguageName();
+    }
+
     /**
      * Swapping languages
      */
