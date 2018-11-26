@@ -33,11 +33,10 @@ public class DialogFragment extends Fragment {
     private static final int CHOOSE_LANG_CODE = 10;
     private RecyclerView mDialogView;
     private DialogAdapter mDialogAdapter;
+    private TextInputEditText mMessageText;
 
     private MainActivity mActivity;
-
-    private ChooseLangFragment mChooseLang;
-
+    
     //List of messages
     private ArrayList<String> mMessages;
 
@@ -59,8 +58,6 @@ public class DialogFragment extends Fragment {
         mPresenter = new DialogPresenter(this);
         mMessages = mPresenter.getMessages();
         mDialogAdapter = new DialogAdapter(mMessages, getContext());
-
-        mChooseLang = new ChooseLangFragment();
     }
 
     /**
@@ -87,16 +84,16 @@ public class DialogFragment extends Fragment {
                 LinearLayoutManager.VERTICAL, true));
         mDialogView.setAdapter(mDialogAdapter);
 
-        final TextInputEditText messageText = (TextInputEditText) root.findViewById(R.id.dialog_input_text);
+        mMessageText = (TextInputEditText) root.findViewById(R.id.dialog_input_text);
 
         final ImageButton sendMessage = (ImageButton) root.findViewById(R.id.send_button);
         sendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String text = messageText.getText().toString().trim();
+                String text = mMessageText.getText().toString().trim();
                 if (!text.equals("")) {
                     mMessages.add(text);
-                    messageText.setText("");
+                    mMessageText.setText("");
                     mDialogAdapter.notifyItemChanged(mMessages.size());
                 }
             }
