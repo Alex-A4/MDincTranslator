@@ -125,11 +125,11 @@ public class DialogFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 0) {
-            if (requestCode == CHOOSE_LANG_CODE) {
-                mActivity.updateSubtitle(1);
-            }
+
+        if (requestCode == CHOOSE_LANG_CODE) {
+            mActivity.updateSubtitle(1);
         }
+
     }
 
     public String updateSutitle() {
