@@ -2,6 +2,8 @@ package com.alexa4.mdinctranslater.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -130,6 +132,17 @@ public class DialogFragment extends Fragment {
             mActivity.updateSubtitle(1);
         }
 
+    }
+
+    /**
+     * Check network connection
+     * @return is the internet enabled
+     */
+    private boolean isNetworkConnected(){
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity()
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     public String updateSubtitle() {
