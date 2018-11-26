@@ -105,6 +105,7 @@ public class DialogFragment extends Fragment {
                                     public void sendTranslatedText(String text) {
                                         mMessages.add(text);
                                         mDialogAdapter.notifyItemChanged(mMessages.size());
+                                        mDialogView.scrollToPosition(0);
                                     }
                                 });
 
