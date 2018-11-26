@@ -36,7 +36,7 @@ public class DialogFragment extends Fragment {
     private TextInputEditText mMessageText;
 
     private MainActivity mActivity;
-    
+
     //List of messages
     private ArrayList<String> mMessages;
 
@@ -94,10 +94,14 @@ public class DialogFragment extends Fragment {
                 if (!text.equals("")) {
                     mMessages.add(text);
                     mMessageText.setText("");
+                    mPresenter.swapTargetLanguages();
+                    updateInputTextHint();
                     mDialogAdapter.notifyItemChanged(mMessages.size());
                 }
             }
         });
+
+        updateInputTextHint();
 
         setHasOptionsMenu(true);
 
@@ -144,5 +148,16 @@ public class DialogFragment extends Fragment {
 
     public String updateSubtitle() {
         return mPresenter.getTranslateLanguagesSubtitle();
+    }
+
+
+    /**
+     * Updating hint of input text according to current language
+     */
+    private void updateInputTextHint() {
+        String tempLang = mPresenter.getNameOfLanguageFrom();
+
+        String format = String.format(getString(R.string.write_message_on), tempLang);
+        mMessageText.setHint(format);
     }
 }
