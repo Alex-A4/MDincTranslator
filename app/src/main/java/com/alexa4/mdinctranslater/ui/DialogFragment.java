@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -33,7 +34,7 @@ public class DialogFragment extends Fragment {
     private static final int CHOOSE_LANG_CODE = 10;
     private RecyclerView mDialogView;
     private DialogAdapter mDialogAdapter;
-    private TextInputEditText mMessageText;
+    private TextInputLayout mInputLayout;
 
     private MainActivity mActivity;
 
@@ -84,7 +85,9 @@ public class DialogFragment extends Fragment {
                 LinearLayoutManager.VERTICAL, true));
         mDialogView.setAdapter(mDialogAdapter);
 
-        mMessageText = (TextInputEditText) root.findViewById(R.id.dialog_input_text);
+        mInputLayout = (TextInputLayout) root.findViewById(R.id.text_input_layout);
+
+        final TextInputEditText mMessageText = (TextInputEditText) root.findViewById(R.id.dialog_input_text);
 
         final ImageButton sendMessage = (ImageButton) root.findViewById(R.id.send_button);
         sendMessage.setOnClickListener(new View.OnClickListener() {
@@ -158,6 +161,6 @@ public class DialogFragment extends Fragment {
         String tempLang = mPresenter.getNameOfLanguageFrom();
 
         String format = String.format(getString(R.string.write_message_on), tempLang);
-        mMessageText.setHint(format);
+        mInputLayout.setHint(format);
     }
 }
