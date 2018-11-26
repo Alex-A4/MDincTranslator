@@ -48,4 +48,11 @@ public class DialogPresenter {
         return mStore.getLanguageFrom().getLanguageName()
                 + " - " + mStore.getLanguageTo().getLanguageName();
     }
+
+    /**
+     * Swapping languages
+     */
+    public void swapTargetLanguages() {
+        mStore.swapTargetLanguages();
+    }
 }

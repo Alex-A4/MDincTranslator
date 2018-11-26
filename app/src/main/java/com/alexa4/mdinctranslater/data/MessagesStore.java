@@ -107,4 +107,14 @@ public class MessagesStore {
     public String createLangToTranslate() {
         return mLanguageFrom.getLanguageCode() + "-" + mLanguageTo.getLanguageCode();
     }
+
+
+    /**
+     * Swapping languages which uses to translate
+     */
+    public void swapTargetLanguages() {
+        LanguageInfo temp = mLanguageTo;
+        mLanguageTo = mLanguageFrom;
+        mLanguageFrom = temp;
+    }
 }
