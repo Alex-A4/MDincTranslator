@@ -146,6 +146,7 @@ public class DialogFragment extends Fragment {
 
         if (requestCode == CHOOSE_LANG_CODE) {
             mActivity.updateSubtitle(1);
+            updateInputTextHint();
         }
 
     }
