@@ -130,6 +130,7 @@
             android:id="@+id/to_language_text"
             style="@style/LanguageText"
             android:text="To"
+            android:padding="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toRightOf="@id/swap_languages_button"
