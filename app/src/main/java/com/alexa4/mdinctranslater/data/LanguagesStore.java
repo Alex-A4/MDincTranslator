@@ -2,6 +2,7 @@ package com.alexa4.mdinctranslater.data;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Singleton store to collect Yandex languages pairs
@@ -72,6 +73,8 @@ public class LanguagesStore {
                 new LanguageInfo("Шведский", "sv"),
                 new LanguageInfo("Чешский", "cs"))
         );
+
+        Collections.sort(mPairs, LanguageInfo.getNameComparator());
     }
 
 
