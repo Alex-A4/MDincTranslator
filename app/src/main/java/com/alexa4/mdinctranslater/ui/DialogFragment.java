@@ -1,7 +1,10 @@
 package com.alexa4.mdinctranslater.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -76,6 +79,7 @@ public class DialogFragment extends Fragment {
         mPresenter = null;
     }
 
+    @SuppressLint("RestrictedApi")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -96,6 +100,9 @@ public class DialogFragment extends Fragment {
         mInputLayout = (TextInputLayout) root.findViewById(R.id.text_input_layout);
 
         final TextInputEditText mMessageText = (TextInputEditText) root.findViewById(R.id.dialog_input_text);
+        //Setting transparent color of underline
+        ColorStateList colorStateList = ColorStateList.valueOf(Color.TRANSPARENT);
+        mMessageText.setSupportBackgroundTintList(colorStateList);
 
         final ImageButton sendMessage = (ImageButton) root.findViewById(R.id.send_button);
         sendMessage.setOnClickListener(new View.OnClickListener() {
