@@ -2,6 +2,7 @@ package com.alexa4.mdinctranslater.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
@@ -57,10 +58,29 @@ public class TranslatorFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.translate_fragment, container, false);
 
-        //TODO: add logic to select languages
         //Bottom text fields which show languages for translating
         mTextFrom = (TextView) root.findViewById(R.id.from_language_text);
+        mTextFrom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Starting activity to choose language
+                Intent intent = ChooseLangForTranslatorActivity.getInstance(getContext(),
+                        ChooseLangForTranslatorFragment.TARGET_FROM);
+                startActivityForResult(intent, 0);
+            }
+        });
+
         mTextTo = (TextView)  root.findViewById(R.id.to_language_text);
+        mTextTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Starting activity to choose language
+                Intent intent = ChooseLangForTranslatorActivity.getInstance(getContext(),
+                        ChooseLangForTranslatorFragment.TARGET_TO);
+                startActivityForResult(intent, 0);
+            }
+        });
+
 
         mInputText = (TextInputEditText) root.findViewById(R.id.text_to_translate);
         //Setting transparent color of underline
@@ -146,6 +166,15 @@ public class TranslatorFragment extends Fragment {
         }
     }
 
+
+    /**
+     * Updating the languages layout when user returns from activity to choose langs
+     */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 0)
+            updateLanguagesLayout();
+    }
 
     /**
      * Set the translated text to special TextView
