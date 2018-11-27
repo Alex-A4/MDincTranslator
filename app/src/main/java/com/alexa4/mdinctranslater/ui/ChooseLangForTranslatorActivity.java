@@ -12,7 +12,11 @@ import com.alexa4.mdinctranslater.R;
 
 public class ChooseLangForTranslatorActivity extends AppCompatActivity {
     private static final String CHOOSE_LANG_TAG = "CHOOSE_LANG";
+    private static final String TARGET_LANG = "TARGET_LANG";
+
     private Toolbar mToolbar;
+
+    private int mTargetLang;
 
     private ChooseLangForTranslatorFragment mFragment;
 
@@ -21,9 +25,15 @@ public class ChooseLangForTranslatorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_lang_activity);
 
+        //Getting target language
+        mTargetLang = getIntent().getIntExtra(TARGET_LANG, 0);
+
         mToolbar = (Toolbar) findViewById(R.id.choose_lang_toolbar);
-        //TODO: add setting title in dependence of target language
-        mToolbar.setTitle("");
+
+        if (mTargetLang == ChooseLangForTranslatorFragment.TARGET_FROM)
+            mToolbar.setTitle(R.string.target_lang_from);
+        else if (mTargetLang == ChooseLangForTranslatorFragment.TARGET_TO)
+            mToolbar.setTitle(R.string.target_lang_to);
 
         initFragment();
 
@@ -43,17 +53,21 @@ public class ChooseLangForTranslatorActivity extends AppCompatActivity {
         mFragment = (ChooseLangForTranslatorFragment) manager.findFragmentByTag(CHOOSE_LANG_TAG);
 
         if (mFragment == null)
-            mFragment = new ChooseLangForTranslatorFragment();
+            mFragment = ChooseLangForTranslatorFragment.getInstance(mTargetLang);
     }
 
 
     /**
-     * TODO: add logic to instance target language
-     * @param context
-     * @param target
+     * Initializing activity to select language for translator
+     * @param context the context of app
+     * @param target the target language which need change.
+     *      To indicate target variables
+     *      @see ChooseLangForTranslatorFragment target const
      * @return
      */
-    public static Intent getInstance(Context context, String target) {
-        return new Intent(context, ChooseLangForTranslatorActivity.class);
+    public static Intent getInstance(Context context, int target) {
+        Intent intent = new Intent(context, ChooseLangForTranslatorActivity.class);
+        intent.putExtra(TARGET_LANG, target);
+        return intent;
     }
 }
