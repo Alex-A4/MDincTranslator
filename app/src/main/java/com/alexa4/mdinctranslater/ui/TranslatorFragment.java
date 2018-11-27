@@ -21,6 +21,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,12 +60,17 @@ public class TranslatorFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.translate_fragment, container, false);
 
+        //Initializing animation
+        final Animation mClickAnimation = AnimationUtils.loadAnimation(getContext(),
+                R.anim.click_animation);
+
         //Bottom text fields which show languages for translating
         mTextFrom = (TextView) root.findViewById(R.id.from_language_text);
         mTextFrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Starting activity to choose language
+                v.startAnimation(mClickAnimation);
                 Intent intent = ChooseLangForTranslatorActivity.getInstance(getContext(),
                         ChooseLangForTranslatorFragment.TARGET_FROM);
                 startActivityForResult(intent, 0);
@@ -75,6 +82,7 @@ public class TranslatorFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //Starting activity to choose language
+                v.startAnimation(mClickAnimation);
                 Intent intent = ChooseLangForTranslatorActivity.getInstance(getContext(),
                         ChooseLangForTranslatorFragment.TARGET_TO);
                 startActivityForResult(intent, 0);
@@ -104,6 +112,7 @@ public class TranslatorFragment extends Fragment {
         mClearAllButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                v.startAnimation(mClickAnimation);
                 mInputText.setText("");
                 mTranslatedText.setText("");
             }
@@ -113,6 +122,7 @@ public class TranslatorFragment extends Fragment {
         mSwapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                v.startAnimation(mClickAnimation);
                 mPresenter.swapTargetLanguages();
                 updateLanguagesLayout();
 
