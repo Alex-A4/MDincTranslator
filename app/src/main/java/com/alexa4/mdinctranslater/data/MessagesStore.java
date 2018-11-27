@@ -42,8 +42,8 @@ public class MessagesStore {
         mMessages = new ArrayList<>();
         mPairs = new ArrayList<>();
         fillList();
-        mLanguageFrom = mPairs.get(0);
-        mLanguageTo = mPairs.get(1);
+        mLanguageFrom = getLangByName("Русский");
+        mLanguageTo = getLangByName("Английский");
     }
 
     public ArrayList<LanguageInfo> getPairs() {
