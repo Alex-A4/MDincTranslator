@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.alexa4.mdinctranslater.R;
 
-public class ChooseLangActivity extends AppCompatActivity {
+public class ChooseLangForDialogsActivity extends AppCompatActivity {
     private static final String LANG_FRAGMENT_TAG = "LANG_FRAGMENT";
 
     private Toolbar mToolbar;

@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.ChooseLangActivity">
+        <activity android:name=".ui.ChooseLangForDialogsActivity">
 
         </activity>
     </application>

@@ -132,7 +132,7 @@ public class DialogFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.dialog_more:
-                startActivityForResult(new Intent(getContext(), ChooseLangActivity.class),
+                startActivityForResult(new Intent(getContext(), ChooseLangForDialogsActivity.class),
                         CHOOSE_LANG_CODE);
                 return true;
 
