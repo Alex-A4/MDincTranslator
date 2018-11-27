@@ -50,6 +50,11 @@ public class ChooseLangForTranslatorFragment extends Fragment {
         View root = inflater.inflate(R.layout.translator_choose_lang_layout, container, false);
 
         final TextView mSelectedText = root.findViewById(R.id.selected_lang_text);
+        //Setting default language
+        if (mTargetLang == TARGET_FROM)
+            mSelectedText.setText(mStore.getLanguageFrom().getLanguageName());
+        else if (mTargetLang == TARGET_TO)
+            mSelectedText.setText(mStore.getLanguageTo().getLanguageName());
 
         final RecyclerView mListOfLangs = root.findViewById(R.id.langs_recycler_view);
         mListOfLangs.setLayoutManager(new LinearLayoutManager(getContext(),
