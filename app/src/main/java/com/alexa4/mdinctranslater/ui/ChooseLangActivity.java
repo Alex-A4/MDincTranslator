@@ -12,7 +12,7 @@ public class ChooseLangActivity extends AppCompatActivity {
     private static final String LANG_FRAGMENT_TAG = "LANG_FRAGMENT";
 
     private Toolbar mToolbar;
-    private ChooseLangFragment mLangFragment;
+    private ChooseLangForDialogsFragment mLangFragment;
 
 
     @Override
@@ -33,9 +33,9 @@ public class ChooseLangActivity extends AppCompatActivity {
 
     private void initFragment() {
         FragmentManager manager = getSupportFragmentManager();
-        mLangFragment = (ChooseLangFragment) manager.findFragmentByTag(LANG_FRAGMENT_TAG);
+        mLangFragment = (ChooseLangForDialogsFragment) manager.findFragmentByTag(LANG_FRAGMENT_TAG);
 
         if (mLangFragment == null)
-            mLangFragment = new ChooseLangFragment();
+            mLangFragment = new ChooseLangForDialogsFragment();
     }
 }

@@ -19,7 +19,7 @@ import com.alexa4.mdinctranslater.data.MessagesStore;
 
 import java.util.ArrayList;
 
-public class ChooseLangFragment extends Fragment {
+public class ChooseLangForDialogsFragment extends Fragment {
     private ArrayList<LanguageInfo> mLangs;
 
     private RecyclerView mLangsLeftResView;
