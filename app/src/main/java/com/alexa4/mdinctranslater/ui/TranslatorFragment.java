@@ -125,7 +125,6 @@ public class TranslatorFragment extends Fragment {
         });
 
         updateLanguagesLayout();
-        setHasOptionsMenu(true);
 
         return root;
     }
@@ -159,24 +158,6 @@ public class TranslatorFragment extends Fragment {
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
-
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.translator_menu, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            //TODO: Add logic to start settings fragment
-            case R.id.translator_settings:
-                Toast.makeText(getContext(), "Settings clicked", Toast.LENGTH_SHORT).show();
-                return true;
-
-            default: return false;
-        }
     }
 
 
