@@ -51,6 +51,7 @@
             android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/translated_thanks_yandex"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
