@@ -14,8 +14,6 @@ public class ChooseLangForTranslatorActivity extends AppCompatActivity {
     private static final String CHOOSE_LANG_TAG = "CHOOSE_LANG";
     private static final String TARGET_LANG = "TARGET_LANG";
 
-    private Toolbar mToolbar;
-
     private int mTargetLang;
 
     private ChooseLangForTranslatorFragment mFragment;
@@ -28,12 +26,12 @@ public class ChooseLangForTranslatorActivity extends AppCompatActivity {
         //Getting target language
         mTargetLang = getIntent().getIntExtra(TARGET_LANG, 0);
 
-        mToolbar = (Toolbar) findViewById(R.id.choose_lang_toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.choose_lang_toolbar);
 
         if (mTargetLang == ChooseLangForTranslatorFragment.TARGET_FROM)
-            mToolbar.setTitle(R.string.target_lang_from);
+            toolbar.setTitle(R.string.target_lang_from);
         else if (mTargetLang == ChooseLangForTranslatorFragment.TARGET_TO)
-            mToolbar.setTitle(R.string.target_lang_to);
+            toolbar.setTitle(R.string.target_lang_to);
 
         initFragment();
 
