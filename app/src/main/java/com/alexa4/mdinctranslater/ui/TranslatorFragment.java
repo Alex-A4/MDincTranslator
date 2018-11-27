@@ -95,11 +95,8 @@ public class TranslatorFragment extends Fragment {
             public void onClick(View v) {
                 String text = mInputText.getText().toString().trim();
 
-                if (isNetworkConnected()) {
-                    if (!text.equals(""))
-                        mPresenter.getTranslatedText(text);
-                } else Toast.makeText(getContext(), R.string.check_internet, Toast.LENGTH_SHORT).show();
-
+                if (!text.equals(""))
+                    translateText(text);
             }
         });
 
@@ -126,6 +123,17 @@ public class TranslatorFragment extends Fragment {
         setHasOptionsMenu(true);
 
         return root;
+    }
+
+
+    /**
+     * Translating text thanks to Yandex.Translate
+     * @param text  the text which need translate
+     */
+    private void translateText(String text) {
+        if (isNetworkConnected())
+            mPresenter.getTranslatedText(text);
+        else Toast.makeText(getContext(), R.string.check_internet, Toast.LENGTH_SHORT).show();
     }
 
     /**
