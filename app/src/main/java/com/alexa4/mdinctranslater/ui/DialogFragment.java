@@ -18,6 +18,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -78,6 +80,10 @@ public class DialogFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        //Initializing animation
+        final Animation mClickAnimation = AnimationUtils.loadAnimation(getContext(),
+                R.anim.click_animation);
+
 
         View root = inflater.inflate(R.layout.dialog_fragment, container, false);
 
@@ -95,6 +101,7 @@ public class DialogFragment extends Fragment {
         sendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                v.startAnimation(mClickAnimation);
                 String text = mMessageText.getText().toString().trim();
                 if (!text.equals(""))
                     if (isNetworkConnected()) {
