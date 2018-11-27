@@ -109,7 +109,6 @@ public class TranslatorFragment extends Fragment {
             }
         });
 
-        //TODO: add logic to swap text into InputText and Translated text and translate the first
         final ImageButton mSwapButton = (ImageButton) root.findViewById(R.id.swap_languages_button);
         mSwapButton.setOnClickListener(new View.OnClickListener() {
             @Override
