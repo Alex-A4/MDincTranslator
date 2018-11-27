@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/text_left_talker"
-        android:gravity="center"
+        android:gravity="center_horizontal|top"
         android:text="@string/left_talker"
         android:layout_width="0dp"
         android:textSize="17sp"
@@ -22,7 +22,7 @@
 
     <TextView
         android:id="@+id/left_selected_lang"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:layout_width="0dp"
@@ -56,7 +56,7 @@
     <TextView
         android:id="@+id/text_right_talker"
         android:text="@string/right_talker"
-        android:gravity="center"
+        android:gravity="center_horizontal|top"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="17sp"
@@ -69,7 +69,7 @@
 
     <TextView
         android:id="@+id/right_selected_lang"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:layout_width="0dp"
