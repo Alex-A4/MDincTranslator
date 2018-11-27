@@ -3,6 +3,7 @@ package com.alexa4.mdinctranslater.data;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Singleton class to store messages of dialogue
@@ -70,6 +71,8 @@ public class MessagesStore {
                         new LanguageInfo("Шведский", "sv"),
                         new LanguageInfo("Чешский", "cs"))
         );
+
+        Collections.sort(mPairs, LanguageInfo.getNameComparator());
     }
 
     /**
