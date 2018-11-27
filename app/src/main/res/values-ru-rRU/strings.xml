@@ -17,4 +17,5 @@
     <string name="write_message_on">Введите %1$s текст</string>
     <string name="target_lang_to">Выберите язык для перевода</string>
     <string name="target_lang_from">Выберите язык текста</string>
+    <string name="selected_text_label">Ваш выбор:</string>
 </resources>

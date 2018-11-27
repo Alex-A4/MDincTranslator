@@ -16,4 +16,5 @@
     <string name="write_message_on">Write %1$s text</string>
     <string name="target_lang_to">Select language to translate</string>
     <string name="target_lang_from">Select language for text</string>
+    <string name="selected_text_label">Your choice:</string>
 </resources>
