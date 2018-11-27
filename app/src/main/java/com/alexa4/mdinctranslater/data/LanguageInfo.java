@@ -1,5 +1,8 @@
 package com.alexa4.mdinctranslater.data;
 
+import java.util.Collections;
+import java.util.Comparator;
+
 /**
  * Contains pair like: language - language code
  * for example english-en
@@ -22,6 +25,19 @@ public class LanguageInfo {
 
     public String getLanguageCode() {
         return mLanguageCode;
+    }
+
+    /**
+     * Getting comparator by languages names
+     * @return the name alphabetic comparator
+     */
+    public static Comparator<LanguageInfo> getNameComparator() {
+        return new Comparator<LanguageInfo>() {
+            @Override
+            public int compare(LanguageInfo o1, LanguageInfo o2) {
+                return o1.getLanguageName().compareTo(o2.getLanguageName());
+            }
+        };
     }
 
     @Override
