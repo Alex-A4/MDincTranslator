@@ -9,7 +9,7 @@
         android:id="@+id/choose_dialog_text_item"
         android:textColor="@android:color/white"
         android:gravity="center"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
