@@ -11,8 +11,8 @@
     <string name="dialog_more">Ещё</string>
     <string name="translate_button_text">Перевести</string>
     <string name="choose_langs">Выбрать язык</string>
-    <string name="left_talker">Выберите язык для левого собеседника</string>
-    <string name="right_talker">Выберите язык для правого собеседника</string>
+    <string name="left_talker">Язык левого собеседника</string>
+    <string name="right_talker">Язык правого собеседника</string>
     <string name="choose_dialog_toolbar_text">Выберите языки</string>
     <string name="write_message_on">Введите %1$s текст</string>
     <string name="target_lang_to">Выберите язык для перевода</string>
