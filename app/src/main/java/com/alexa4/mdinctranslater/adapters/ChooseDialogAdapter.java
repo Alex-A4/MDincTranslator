@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.alexa4.mdinctranslater.R;
@@ -22,12 +24,15 @@ public class ChooseDialogAdapter extends RecyclerView.Adapter<ChooseDialogAdapte
     private ArrayList<LanguageInfo> mLanguagesLists;
     private Context mContext;
     private ChooseDialogItemClickListener mListener;
+    private Animation mClickAnimation;
 
     public ChooseDialogAdapter(ArrayList<LanguageInfo> languages, Context context,
                                ChooseDialogItemClickListener listener) {
         mLanguagesLists = languages;
         mContext = context;
         mListener = listener;
+        mClickAnimation = AnimationUtils.loadAnimation(context,
+                R.anim.click_animation);
     }
 
     @NonNull
@@ -56,6 +61,7 @@ public class ChooseDialogAdapter extends RecyclerView.Adapter<ChooseDialogAdapte
             mText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    v.startAnimation(mClickAnimation);
                     mListener.onClick(mText);
                 }
             });
