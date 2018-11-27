@@ -120,7 +120,8 @@ public class TranslatorFragment extends Fragment {
                 String text = mTranslatedText.getText().toString();
                 mInputText.setText(text);
                 mTranslatedText.setText("");
-                translateText(text);
+                if (isNetworkConnected())
+                    translateText(text);
             }
         });
 
