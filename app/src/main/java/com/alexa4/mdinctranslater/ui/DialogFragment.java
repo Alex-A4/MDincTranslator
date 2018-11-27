@@ -82,7 +82,7 @@ public class DialogFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         //Initializing animation
         final Animation mClickAnimation = AnimationUtils.loadAnimation(getContext(),
-                R.anim.click_animation);
+                R.anim.click_anim_rotate);
 
 
         View root = inflater.inflate(R.layout.dialog_fragment, container, false);
