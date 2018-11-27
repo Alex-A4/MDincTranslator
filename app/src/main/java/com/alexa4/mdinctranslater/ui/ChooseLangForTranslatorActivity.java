@@ -21,7 +21,9 @@ public class ChooseLangForTranslatorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_lang_activity);
 
-
+        mToolbar = (Toolbar) findViewById(R.id.choose_lang_toolbar);
+        //TODO: add setting title in dependence of target language
+        mToolbar.setTitle("");
 
         initFragment();
 
