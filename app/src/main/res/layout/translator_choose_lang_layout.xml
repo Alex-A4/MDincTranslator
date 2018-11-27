@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/favorite_color"
+    android:padding="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -12,7 +13,6 @@
         android:gravity="center"
         android:textColor="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/choose_lang_selected_text_margin_top_bottom"
         android:layout_marginBottom="@dimen/choose_lang_selected_text_margin_top_bottom"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
