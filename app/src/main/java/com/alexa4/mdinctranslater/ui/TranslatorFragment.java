@@ -116,6 +116,11 @@ public class TranslatorFragment extends Fragment {
             public void onClick(View v) {
                 mPresenter.swapTargetLanguages();
                 updateLanguagesLayout();
+
+                String text = mTranslatedText.getText().toString();
+                mInputText.setText(text);
+                mTranslatedText.setText("");
+                translateText(text);
             }
         });
 
