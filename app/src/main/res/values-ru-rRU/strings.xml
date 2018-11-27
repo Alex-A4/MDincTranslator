@@ -15,6 +15,6 @@
     <string name="right_talker">Выберите язык для правого собеседника</string>
     <string name="choose_dialog_toolbar_text">Выберите языки</string>
     <string name="write_message_on">Введите %1$s текст</string>
-    <string name="target_lang_to_translate">Выберите язык для перевода</string>
-    <string name="target_lang_to_text">Выберите язык текста</string>
+    <string name="target_lang_to">Выберите язык для перевода</string>
+    <string name="target_lang_from">Выберите язык текста</string>
 </resources>

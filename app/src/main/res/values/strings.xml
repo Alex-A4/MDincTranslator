@@ -14,6 +14,6 @@
     <string name="right_talker">Choose language for right interlocutor:</string>
     <string name="choose_dialog_toolbar_text">Select languages</string>
     <string name="write_message_on">Write %1$s text</string>
-    <string name="target_lang_to_translate">Select language to translate</string>
-    <string name="target_lang_to_text">Select language for text</string>
+    <string name="target_lang_to">Select language to translate</string>
+    <string name="target_lang_from">Select language for text</string>
 </resources>
